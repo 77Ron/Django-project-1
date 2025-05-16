@@ -10,3 +10,6 @@ class Meal(models.Model):
     price = models.DecimalField("Price (£)", max_digits=10, decimal_places=2)
     # Availability of the meal..
     available = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.description}'
