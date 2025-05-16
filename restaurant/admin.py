@@ -3,7 +3,7 @@ from .models import Meal
 
 class MealAdmin(admin.ModelAdmin):
     list_display = ("name", "description", "price", "available",)
-    search_fields = ("name", "description", "price")
+    search_fields = ("name", "description", "price",)
     
 
 
