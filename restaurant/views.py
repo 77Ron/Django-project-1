@@ -10,9 +10,14 @@ def index(request):
     #Do something.
     if request.method == 'GET':
         meals = Meal.objects.all()
+
+        context ={
+            'meals' : meals,
+        }
         
         #return HttpResponse(meals)
-        return render(request=request, template_name='restaurant/index.html')
+        return render(request=request, template_name='restaurant/index.html', 
+                      context=context)
         
     #return HttpResponse(200)
     #return HttpResponse(f"HTTP Response: {HTTPStatus.OK}")

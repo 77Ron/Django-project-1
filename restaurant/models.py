@@ -8,8 +8,10 @@ class Meal(models.Model):
     description = models.TextField("Description of the Meal", blank=True, null=True)
     # Store the meal price.
     price = models.DecimalField("Price (£)", max_digits=10, decimal_places=2)
-    # Availability of the meal..
+    # Availability of the meal.
     available = models.BooleanField("Online Availability", default=False)
+    # Stock count.
+    stock = models.IntegerField("Stock Count", default=0)
 
     def __str__(self):
         return f'{self.description}'

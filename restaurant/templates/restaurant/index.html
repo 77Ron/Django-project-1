@@ -17,8 +17,26 @@
     </head>
 
     <body>
-         <h1 class="pt-3 mt-3 text-center">Welcome to My Restaurant
-         </h1>
+         <h1 class="pt-3 mt-3 text-center">Welcome to My Restaurant</h1>
+
+         <div class="row" mx-2>
+            <div class="col">
+                {{meals.0.name}}
+                {{meals.0.price}}
+                {{meals.0.stock}}
+
+            </div>
+            <div class="col">
+                {{meals.1.name}}
+                {{meals.1.price}}
+                {{meals.1.stock}}
+            </div>
+            <div class="col">
+                {{meals.2.name}}
+                {{meals.2.price}}
+                {{meals.2.stock}}
+            </div>
+         </div>
 
     </body>
 
