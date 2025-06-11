@@ -16,11 +16,12 @@
         <title>My Restaurant</title>
     </head>
 
-    <body>
+    <body style="overflow-x: hidden;">
         {% include 'restaurant/semantics/header.html' %}
         {% block content %}
 
         {% endblock content %}
+        {% include 'restaurant/semantics/footer.html' %}
     </body>
 
 </html>
