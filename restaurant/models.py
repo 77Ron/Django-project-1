@@ -8,6 +8,8 @@ class Meal(models.Model):
     description = models.TextField("Description of the Meal", blank=True, null=True)
     # Store the meal price.
     price = models.DecimalField("Price (£)", max_digits=10, decimal_places=2)
+    # Images of the meals.
+    image = models.ImageField(upload_to='meal_images', default='meal_images/default_meal.jpg')
     # Availability of the meal.
     available = models.BooleanField("Online Availability", default=False)
     # Stock count.
