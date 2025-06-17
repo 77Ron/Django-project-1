@@ -1,3 +1,9 @@
-.wrapper {
+.hero {
     min-height: 100vh;
+    background-image: url("../img/hero_gen_ai.jpg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }

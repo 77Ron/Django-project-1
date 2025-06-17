@@ -1,3 +1,7 @@
+{% load static %}
+
+<link type="text/css" rel="stylesheet" href="{% static 'restaurant/css/header.css' %}">
+
 <header>
     <div class="navigator">
         <nav class="navbar navbar-expand-lg sticky-top"
@@ -9,8 +13,14 @@
                  aria-controls="navbarContent">
                 <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav container-fluid justify-content-center">
+                        <li>
+                            <a href="{% url 'index' %}">
+                                <img class="logo" src="{% static 'restaurant/img/logo.jpg/' %}" />
+                            </a>
+                        </li>
                         <li class="nav-item active mx-2">
                             <a class="nav-link" href="{% url 'index' %}">Home</a>
                         </li>
