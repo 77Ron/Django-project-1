@@ -6,8 +6,8 @@
     <div class="wrapper">
         <div class="hero">
             {% include 'restaurant/semantics/header.html' %}
-            <div>
-                <h1 class="pt-3 mt-3 text-center">Welcome to My Restaurant</h1>
+            <div class="vertical-align-hero">
+                <h1 class="welcome pt-3 mt-3 text-center">Welcome to My Restaurant</h1>
             </div>
         </div>
 
@@ -15,23 +15,35 @@
 
         <div class="row" mx-2>
             <div class="col">
-                <img style="height:200px; width:200px;" src="../../media/{{ meals.0.image}}">
-                {{meals.0.name}}
-                {{meals.0.price}}
-                {{meals.0.stock}}
+                <div class="meal-content border mx-2 pb-2">
+                    <div>
+                        <a href="#">
+                            <img class="meal-image" src="../../media/{{ meal.0 }}" />
+                        </a>
+                    </div>
 
-            </div>
-            <div class="col">
-                <img style="height:200px; width:200px;" src="../../media/{{ meals.1.image}}">
-                {{meals.1.name}}
-                {{meals.1.price}}
-                {{meals.1.stock}}
-            </div>
-            <div class="col">
-                <img style="height:200px; width:200px;" src="../../media/{{ meals.2.image}}">
-                {{meals.2.name}}
-                {{meals.2.price}}
-                {{meals.2.stock}}
+                    <div class="column-text-content px-3">
+                        <div class="pt-3 meal-name">
+                            {{ meal.0.name }}
+                        </div>
+                        <div class="pt-3 meal-price">
+                            <span></span>{{ meal.0.price }}
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="pt-2 meal-stock">
+                                    <span class="stock">In Stock: </span>{{ meal.0.stock }}
+                                </div>
+                            </div>
+
+                            <div class="col order-button-align">
+                                <div class="order-button">
+                                    <a href="#" class="btn btn-dark">Order</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
