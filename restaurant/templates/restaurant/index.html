@@ -19,7 +19,7 @@
                             <div class="meal-content border mx-2 pb-2">
                                 <div>
                                     <a href="#">
-                                        <img class="meal-image" src="../../media/{{ meal.0 }}" />
+                                        <img class="meal-image" src="../../media/{{ meal.0.image }}" />
                                     </a>
                                 </div>
             
@@ -28,12 +28,12 @@
                                         {{ meal.0.name }}
                                     </div>
                                     <div class="pt-3 meal-price">
-                                        <span></span>{{ meal.0.price }}
+                                        <span>£</span>{{ meal.0.price }}
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="pt-2 meal-stock">
-                                                <span class="stock">In Stock: </span>{{ meal.0.stock }}
+                                                <span class="stock">In Stock:</span>{{ meal.0.stock }}
                                             </div>
                                         </div>
             
@@ -47,6 +47,75 @@
                             </div>
                         {% endif %}
                     </div>
+
+                    <div class="col px=0">
+                        {% if meal.1 %}
+                            <div class="meal-content border mx-2 pb-2">
+                                <div>
+                                    <a href="#">
+                                        <img class="meal-image" src="../../media/{{ meal.1.image }}" />
+                                    </a>
+                                </div>
+            
+                                <div class="column-text-content px-3">
+                                    <div class="pt-3 meal-name">
+                                        {{ meal.1.name }}
+                                    </div>
+                                    <div class="pt-3 meal-price">
+                                        <span>£</span>{{ meal.1.price }}
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="pt-2 meal-stock">
+                                                <span class="stock">In Stock:</span>{{ meal.1.stock }}
+                                            </div>
+                                        </div>
+            
+                                        <div class="col order-button-align">
+                                            <div class="order-button">
+                                                <a href="#" class="btn btn-dark">Order</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="col px=0">
+                        {% if meal.0 %}
+                            <div class="meal-content border mx-2 pb-2">
+                                <div>
+                                    <a href="#">
+                                        <img class="meal-image" src="../../media/{{ meal.2.image }}" />
+                                    </a>
+                                </div>
+            
+                                <div class="column-text-content px-3">
+                                    <div class="pt-3 meal-name">
+                                        {{ meal.2.name }}
+                                    </div>
+                                    <div class="pt-3 meal-price">
+                                        <span>£</span>{{ meal.2.price }}
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="pt-2 meal-stock">
+                                                <span class="stock">In Stock:</span>{{ meal.2.stock }}
+                                            </div>
+                                        </div>
+            
+                                        <div class="col order-button-align">
+                                            <div class="order-button">
+                                                <a href="#" class="btn btn-dark">Order</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
                 </div>
             {% endfor %}
         </div>

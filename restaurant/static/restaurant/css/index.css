@@ -1,6 +1,6 @@
 .hero {
     min-height: 100vh;
-    background-image: url("../img/hero_gen_ai.jpg");
+    background-image: linear-gradient(rgba(7, 1, 32, 0.123), rgba(32, 1, 1, 0.322)), url("../img/hero_gen_ai.jpg");
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
