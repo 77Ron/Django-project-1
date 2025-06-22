@@ -39,7 +39,7 @@
             
                                         <div class="col order-button-align">
                                             <div class="order-button">
-                                                <a href="#" class="btn btn-dark">Order</a>
+                                                <a href="{% url 'order' pk=meal.0.id %}" class="btn btn-dark">Order</a>
                                             </div>
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@
             
                                         <div class="col order-button-align">
                                             <div class="order-button">
-                                                <a href="#" class="btn btn-dark">Order</a>
+                                                <a href="{% url 'order' pk=meal.1.id %}" class="btn btn-dark">Order</a>
                                             </div>
                                         </div>
                                     </div>
@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="col px=0">
-                        {% if meal.0 %}
+                        {% if meal.2 %}
                             <div class="meal-content border mx-2 pb-2">
                                 <div>
                                     <a href="#">
@@ -107,7 +107,7 @@
             
                                         <div class="col order-button-align">
                                             <div class="order-button">
-                                                <a href="#" class="btn btn-dark">Order</a>
+                                                <a href="{% url 'order' pk=meal.2.id %}" class="btn btn-dark">Order</a>
                                             </div>
                                         </div>
                                     </div>

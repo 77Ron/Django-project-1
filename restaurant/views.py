@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from .models import Meal, OrderTransaction
@@ -50,6 +50,7 @@ def order(request, pk=None):
                 meal=got_meal, customer=request.user, amount=got_meal.price)
             got_meal.stock -= 1
             got_meal.save()
-            return HttpResponse(f"HTTP Response: {HTTPStatus.CREATED}")
+            # return HttpResponse(f"HTTP Response: {HTTPStatus.CREATED}")
+            return redirect('index')
         
     return HttpResponse(f"HTTP Response: {HTTPStatus.BAD_REQUEST}")
