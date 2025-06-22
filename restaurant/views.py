@@ -2,7 +2,7 @@ from http import HTTPStatus
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Meal
+from .models import Meal, OrderTransaction
 
 # Create your views here.
 
@@ -40,4 +40,16 @@ def index(request):
         
     #return HttpResponse(200)
     #return HttpResponse(f"HTTP Response: {HTTPStatus.OK}")
+    return HttpResponse(f"HTTP Response: {HTTPStatus.BAD_REQUEST}")
+
+def order(request, pk=None):
+    if pk:
+        got_meal=Meal.objects.filter(id=pk).last()
+        if got_meal and got_meal.stock > 0:
+            OrderTransaction.objects.create(
+                meal=got_meal, customer=request.user, amount=got_meal.price)
+            got_meal.stock -= 1
+            got_meal.save()
+            return HttpResponse(f"HTTP Response: {HTTPStatus.CREATED}")
+        
     return HttpResponse(f"HTTP Response: {HTTPStatus.BAD_REQUEST}")
