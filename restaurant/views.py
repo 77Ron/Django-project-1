@@ -54,3 +54,12 @@ def order(request, pk=None):
             return redirect('index')
         
     return HttpResponse(f"HTTP Response: {HTTPStatus.BAD_REQUEST}")
+
+def details(request):
+    transactions = OrderTransaction.objects.filter(customer=request.user)
+
+    context = {
+        'transactions': transactions,
+    }
+
+    return render(request=request, template_name='restaurant/details.html', context=context)
