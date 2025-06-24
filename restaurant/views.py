@@ -1,6 +1,7 @@
 from http import HTTPStatus
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from .models import Meal, OrderTransaction
 
@@ -42,6 +43,7 @@ def index(request):
     #return HttpResponse(f"HTTP Response: {HTTPStatus.OK}")
     return HttpResponse(f"HTTP Response: {HTTPStatus.BAD_REQUEST}")
 
+@login_required
 def order(request, pk=None):
     if pk:
         got_meal=Meal.objects.filter(id=pk).last()
@@ -55,6 +57,7 @@ def order(request, pk=None):
         
     return HttpResponse(f"HTTP Response: {HTTPStatus.BAD_REQUEST}")
 
+@login_required
 def details(request):
     transactions = OrderTransaction.objects.filter(customer=request.user)
 

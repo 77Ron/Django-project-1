@@ -36,12 +36,19 @@
                                                 <span class="stock">In Stock:</span>{{ meal.0.stock }}
                                             </div>
                                         </div>
-            
-                                        <div class="col order-button-align">
-                                            <div class="order-button">
-                                                <a href="{% url 'order' pk=meal.0.id %}" class="btn btn-dark">Order</a>
+                                        {% if user.is_authenticated %}    
+                                            <div class="col order-button-align">
+                                                <div class="order-button">
+                                                    <a href="{% url 'order' pk=meal.0.id %}" class="btn btn-dark">Order</a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        {% else %}
+                                            <div class="col order-button-align">
+                                                <div class="order-button">
+                                                    <a href="{% url 'order' pk=meal.0.id %}" class="btn btn-dark" style="pointer-events: none;">Order</a>
+                                                </div>
+                                            </div>
+                                        {% endif %} 
                                     </div>
                                 </div>
                             </div>
@@ -71,11 +78,19 @@
                                             </div>
                                         </div>
             
-                                        <div class="col order-button-align">
-                                            <div class="order-button">
-                                                <a href="{% url 'order' pk=meal.1.id %}" class="btn btn-dark">Order</a>
+                                        {% if user.is_authenticated %}    
+                                            <div class="col order-button-align">
+                                                <div class="order-button">
+                                                    <a href="{% url 'order' pk=meal.1.id %}" class="btn btn-dark">Order</a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        {% else %}
+                                            <div class="col order-button-align">
+                                                <div class="order-button">
+                                                    <a href="{% url 'order' pk=meal.1.id %}" class="btn btn-dark" style="pointer-events: none;">Order</a>
+                                                </div>
+                                            </div>
+                                        {% endif %} 
                                     </div>
                                 </div>
                             </div>
@@ -105,11 +120,19 @@
                                             </div>
                                         </div>
             
-                                        <div class="col order-button-align">
-                                            <div class="order-button">
-                                                <a href="{% url 'order' pk=meal.2.id %}" class="btn btn-dark">Order</a>
+                                        {% if user.is_authenticated %}    
+                                            <div class="col order-button-align">
+                                                <div class="order-button">
+                                                    <a href="{% url 'order' pk=meal.2.id %}" class="btn btn-dark">Order</a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        {% else %}
+                                            <div class="col order-button-align">
+                                                <div class="order-button">
+                                                    <a href="{% url 'order' pk=meal.2.id %}" class="btn btn-dark" style="pointer-events: none;">Order</a>
+                                                </div>
+                                            </div>
+                                        {% endif %} 
                                     </div>
                                 </div>
                             </div>
