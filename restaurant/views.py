@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Meal, OrderTransaction
 
+from .forms import UserLoginForm
+
 # Create your views here.
 
 def index(request):
@@ -66,3 +68,10 @@ def details(request):
     }
 
     return render(request=request, template_name='restaurant/details.html', context=context)
+
+def login_user(request):
+    login_form = UserLoginForm()
+    context = {
+        'login_form': login_form,
+    }
+    return render(request=request, template_name='restaurant/login.html')
