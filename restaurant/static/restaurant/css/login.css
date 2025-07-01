@@ -1,0 +1,7 @@
+.login-image {
+    background-image: linear-gradient(rgba(7, 1, 32, 0.123), rgba(32, 1, 1, 0.322)), url("../img/ai_gen_delicious_meal.jpg");
+}
+
+body {
+    overflow: hidden;
+}

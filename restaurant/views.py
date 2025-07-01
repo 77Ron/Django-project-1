@@ -74,4 +74,4 @@ def login_user(request):
     context = {
         'login_form': login_form,
     }
-    return render(request=request, template_name='restaurant/login.html')
+    return render(request=request, template_name='restaurant/login.html', context = context)

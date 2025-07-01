@@ -134,7 +134,7 @@ STATIC_ROOT = Path.joinpath(BASE_DIR, 'static')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
 
-LOGIN_URL = '/admin/login/'
+LOGIN_URL = '/login/'
 
 # python manage.py collectstatic.
 
