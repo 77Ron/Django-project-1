@@ -1,5 +1,6 @@
 {% extends 'restaurant/base/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
     <link type="text/css" rel="stylesheet" href="{% static 'restaurant/css/login.css' %}">
@@ -15,7 +16,7 @@
                 <form class="login-form" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
 
-                    {{ login_form }}
+                    {{ login_form|crispy }}
 
                     <button type="submit" class="btn btn-dark">
                         Submit
