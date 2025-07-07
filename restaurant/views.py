@@ -2,6 +2,7 @@ from http import HTTPStatus
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 
 from .models import Meal, OrderTransaction
 
@@ -70,6 +71,20 @@ def details(request):
     return render(request=request, template_name='restaurant/details.html', context=context)
 
 def login_user(request):
+    if request.method == 'POST':
+        login_form = UserLoginForm(request.POST, request.FILES)
+
+        if login_form.is_valid():
+            username = login_form.cleaned_data.get('username')
+            password = login_form.cleaned_data.get('password')
+
+            authenticateUser = authenticate(request, username=username, password=password)
+
+            if authenticateUser is not None:
+                login(request, authenticateUser)
+
+                return redirect('details')
+          
     login_form = UserLoginForm()
     context = {
         'login_form': login_form,
