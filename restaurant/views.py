@@ -90,3 +90,8 @@ def login_user(request):
         'login_form': login_form,
     }
     return render(request=request, template_name='restaurant/login.html', context = context)
+
+def logout_user(request):
+    logout(request)
+    return redirect('index')
+    
