@@ -10,9 +10,18 @@ class UserLoginForm(forms.Form):
             }
             )
         )
-    password = forms.CharField(required=True, widget=forms.PasswordInput())
+    password = forms.CharField(
+        required=True, 
+        widget=forms.PasswordInput(
+            attrs={'id': 'password_id',}
+        )
+        )
 
     show = forms.BooleanField(
         label='Show Password',
-        widget=forms.CheckboxInput(),
+        widget=forms.CheckboxInput(
+            attrs={
+                'class':'show-password',
+            }
+        ),
         required=False)
