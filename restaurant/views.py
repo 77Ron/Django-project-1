@@ -84,8 +84,14 @@ def login_user(request):
                 login(request, authenticateUser)
 
                 return redirect('details')
-          
-    login_form = UserLoginForm()
+            
+            login_form.add_error('username', 'Wrong Username and Password!')
+            login_form.add_error('password', 'Wrong Username and Password!')
+            
+    else:
+        login_form = UserLoginForm()
+        login_form.fields['password'].widget.attrs['placeholder'] = 'Your Password'
+
     context = {
         'login_form': login_form,
     }
