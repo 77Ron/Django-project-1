@@ -1,4 +1,6 @@
 from django.test import TestCase
+from django.urls import reverse
+from django.contrib.auth.models import User
 
 from .models import Meal
 
@@ -21,6 +23,30 @@ class MealModelTest(TestCase):
         self.assertEqual(meal.name, 'Test Meal')
     
     def test_stock_count(self):
-         meal = Meal.objects.get(id=1)
+        meal = Meal.objects.get(id=1)
 
-         self.assertEqual(meal.stock, 3)
+        self.assertEqual(meal.stock, 3)
+
+class ViewsTest(TestCase):
+    def test_index_view(self):
+         response = self.client.get(reverse('index'))
+
+         self.assertEqual(response.status_code, 200)
+
+    def test_details_view(self):
+        user = User.objects.create(username = "Test1")
+        user.set_password('password')
+        user.save()
+
+        response = self.client.login(username = "Test1", password = 'password')
+
+        self.assertTrue(response)
+
+    def test_details_view_fails(self):
+        user = User.objects.create(username = "Test1")
+        user.set_password('password')
+        user.save()
+
+        response = self.client.login(username = "Test1", password = 'passwordfalse')
+
+        self.assertFalse(response)
