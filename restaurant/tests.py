@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 from .models import Meal
+from .forms import UserLoginForm
 
 # Create your tests here.
 
@@ -50,3 +51,21 @@ class ViewsTest(TestCase):
         response = self.client.login(username = "Test1", password = 'passwordfalse')
 
         self.assertFalse(response)
+
+class FormsTest(TestCase):
+    def test_login_form_user_name_is_required(self):
+        form = UserLoginForm()
+
+        self.assertTrue(form.fields['username'].required)
+
+    def test_valid_login_form(self):
+        User.objects.create(username = "Test3", password='password3')
+        
+        form = UserLoginForm(data={
+            'username': "Test3", 
+            'password':'password3'
+        })
+
+        self.assertTrue(form.is_valid())
+
+        #self.assertEqual(User.objects.username, form.fields['username'])
