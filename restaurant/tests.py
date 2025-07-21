@@ -1,6 +1,7 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user
 
 from .models import Meal
 from .forms import UserLoginForm
@@ -69,3 +70,21 @@ class FormsTest(TestCase):
         self.assertTrue(form.is_valid())
 
         #self.assertEqual(User.objects.username, form.fields['username'])
+
+class ClientTest(TestCase):
+    def test_login(self):
+        user = User.objects.create(username = "Test4")
+        user.set_password('password4')
+        user.save()
+
+        c = Client()
+
+        c.post('/login/',{
+            'username': "Test4", 
+            'password':'password4'
+        })
+
+        #self.assertTrue(get_user(c).is_authenticated)
+
+        response = c.get(reverse('details'))
+        self.assertEqual(response.status_code, 200)
