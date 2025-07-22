@@ -1,10 +1,12 @@
 from django.urls import path
-from .views  import index, order, details, login_user, logout_user
+from django.contrib.auth.decorators import login_required
+
+from .views  import IndexView, OrderView, DetailsView, login_user, logout_user
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('order/<int:pk>', order, name='order'),
-    path('details/', details, name='details'),
+    path('', IndexView.as_view(), name='index'),
+    path('order/<int:pk>', login_required(OrderView.as_view()), name='order'),
+    path('details/', login_required(DetailsView.as_view()), name='details'),
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
 ]
