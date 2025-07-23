@@ -130,7 +130,43 @@ def details(request):
     return render(request=request, template_name='restaurant/details.html', context=context)
 """
 
-def login_user(request):
+class CustomLoginView(View):
+    form_class = UserLoginForm
+    template_name = 'restaurant/login.html'
+
+    def get(self, request):
+        form = self.form_class()
+        form.fields['password'].widget.attrs['placeholder'] = 'Your Password'
+        context = {
+            'login_form': form,
+         }
+        return render(request=request, template_name=self.template_name, context = context)
+
+    def post(self, request):
+        form = self.form_class(request.POST, request.FILES)
+
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+
+            authenticateUser = authenticate(request, username=username, password=password)
+
+            if authenticateUser is not None:
+                login(request, authenticateUser)
+
+                return redirect('details')
+            
+            form.add_error('username', 'Wrong Username and Password!')
+            form.add_error('password', 'Wrong Username and Password!')
+            
+            context = {
+            'login_form': form,
+            }
+
+            return render(request=request, template_name=self.template_name, context = context)
+
+
+"""def login_user(request):
     if request.method == 'POST':
         login_form = UserLoginForm(request.POST, request.FILES)
 
@@ -156,6 +192,7 @@ def login_user(request):
         'login_form': login_form,
     }
     return render(request=request, template_name='restaurant/login.html', context = context)
+"""
 
 def logout_user(request):
     logout(request)
