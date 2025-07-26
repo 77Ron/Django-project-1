@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
+from django.views.generic import ListView, DetailView
 
 from .models import Meal, OrderTransaction
 
@@ -109,7 +110,15 @@ def order(request, pk=None):
     return HttpResponse(f"HTTP Response: {HTTPStatus.BAD_REQUEST}")
 """
 
-class DetailsView(View):
+class DetailsView(ListView):
+    context_object_name = 'transactions'
+    #template_name = 'restaurant/details.html'
+
+    def get_queryset(self):
+        return OrderTransaction.objects.filter(customer=self.request.user)
+
+
+"""class DetailsView(View):
     def get(self, request):
         transactions = OrderTransaction.objects.filter(customer=request.user)
 
@@ -118,7 +127,7 @@ class DetailsView(View):
         }
 
         return render(request=request, template_name='restaurant/details.html', context=context)
-
+"""
 """@login_required
 def details(request):
     transactions = OrderTransaction.objects.filter(customer=request.user)
