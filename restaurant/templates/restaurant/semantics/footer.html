@@ -1,10 +1,11 @@
 {% load static %}
+{% load custom_tags %}
 
 <link type="text/css" rel="stylesheet" href="{% static 'restaurant/css/footer.css' %}">
 
 <footer class="mt-5 pt-3">
     <div class="row container-fluidd mx-auto text-center">
-        <p>&copy; Copyright Ron Wyman 2025</p>
+        <p>&copy; Copyright Ron Wyman {% current_year %}</p>
     </div>
 </footer>
 
