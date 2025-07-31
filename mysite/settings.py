@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'restaurant',
+    'contact',
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +141,16 @@ LOGIN_URL = '/login/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Use your SMTP server
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your_email@example.com'
+EMAIL_HOST_PASSWORD = 'your_email_password'  # Use environment variables in production!
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # python manage.py collectstatic.
 
