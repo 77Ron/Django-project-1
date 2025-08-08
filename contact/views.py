@@ -19,10 +19,10 @@ def contact_view(request):
             """
             from_email = form.cleaned_data['email']
             recipient_list = [settings.EMAIL_HOST_USER]
-            #fail_silently = False
-            auth_password = [settings.EMAIL_HOST_PASSWORD]
+            #auth_password = [settings.EMAIL_HOST_PASSWORD]
             
-            send_mail(subject, message, from_email, recipient_list, auth_password)
+            #send_mail(subject, message, from_email, recipient_list, auth_password)
+            send_mail(subject, message, from_email, recipient_list, fail_silently = False)
             
             messages.success(request, 'Thank you for contacting us!')
             
