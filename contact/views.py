@@ -10,7 +10,7 @@ def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            subject = 'New Contact Form Submission'
+            subject = form.cleaned_data['subject']
             message = f"""
             From: {form.cleaned_data['name']} <{form.cleaned_data['email']}>
             
