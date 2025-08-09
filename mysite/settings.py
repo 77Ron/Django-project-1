@@ -26,12 +26,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_sh5ms-(v5-=5^i%a$c=2v((1@29&f-b*wh_sdt0iqxxs5+xh$'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = True if os.getenv('DEBUG') == "True" else False
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
 
 # Application definition
@@ -86,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'restaurant_db',
-        'USER': 'root',
-        'PASSWORD': '1111',
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASS'),
         'HOST': 'localhost',
         'PORT': '3306'
     }
@@ -157,6 +156,18 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD') 
 
+DEFAULT_FROM_EMAIL = "Ron's Seafood Restaurant"
+
+SECURE_SSL_REDIRECT = True if os.getenv('SECURE_SSL_REDIRECT')  == "True" else False
+SESSION_COOKIE_SECURE = True if os.getenv('SESSION_COOKIE_SECURE') == "True" else False
+CSRF_COOKIE_SECURE = True if os.getenv('CSRF_COOKIEE_SECURE')  == "True" else False
+
+SECURE_HSTS_SECONDS=int(os.getenv('SECURE_HSTS_SECONDS')) # Enable HTTP Strict Transport Security
+SECURE_HSTS_INCLUDE_SUBDOMAINS=True if os.getenv('SECURE_HSTS_INCLUDE_SUBDOMAINS') == "True" else False
+SECURE_HSTS_PRELOAD=True if os.getenv('SECURE_HSTS_PRELOAD') == "True" else False
+SECURE_BROWSER_XXS_FILTER=True if os.getenv('SECURE_BROWSER_XXS_FILTER') == "True" else False
+SECURE_CONTENT_TYPE_NOSNIFF=True if os.getenv('SECURE_CONTENT_TYPE_NOSIFF') == "True" else False
+X_FRAME_OPTIONS=os.getenv('X_FRAME_OPTIONS')
 
 # python manage.py collectstatic.
 
