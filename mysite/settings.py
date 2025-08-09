@@ -162,12 +162,12 @@ SECURE_SSL_REDIRECT = True if os.getenv('SECURE_SSL_REDIRECT')  == "True" else F
 SESSION_COOKIE_SECURE = True if os.getenv('SESSION_COOKIE_SECURE') == "True" else False
 CSRF_COOKIE_SECURE = True if os.getenv('CSRF_COOKIEE_SECURE')  == "True" else False
 
-SECURE_HSTS_SECONDS=int(os.getenv('SECURE_HSTS_SECONDS')) # Enable HTTP Strict Transport Security
-SECURE_HSTS_INCLUDE_SUBDOMAINS=True if os.getenv('SECURE_HSTS_INCLUDE_SUBDOMAINS') == "True" else False
-SECURE_HSTS_PRELOAD=True if os.getenv('SECURE_HSTS_PRELOAD') == "True" else False
-SECURE_BROWSER_XXS_FILTER=True if os.getenv('SECURE_BROWSER_XXS_FILTER') == "True" else False
-SECURE_CONTENT_TYPE_NOSNIFF=True if os.getenv('SECURE_CONTENT_TYPE_NOSIFF') == "True" else False
-X_FRAME_OPTIONS=os.getenv('X_FRAME_OPTIONS')
+SECURE_HSTS_SECONDS = int(os.getenv('SECURE_HSTS_SECONDS')) # Enable HTTP Strict Transport Security
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True if os.getenv('SECURE_HSTS_INCLUDE_SUBDOMAINS') == "True" else False
+SECURE_HSTS_PRELOAD = True if os.getenv('SECURE_HSTS_PRELOAD') == "True" else False
+SECURE_BROWSER_XXS_FILTER = True if os.getenv('SECURE_BROWSER_XXS_FILTER') == "True" else False
+SECURE_CONTENT_TYPE_NOSNIFF = True if os.getenv('SECURE_CONTENT_TYPE_NOSIFF') == "True" else False
+X_FRAME_OPTIONS = os.getenv('X_FRAME_OPTIONS')
 
 # python manage.py collectstatic.
 
