@@ -1,2 +1,6 @@
-# Ignore environment and secret files
+# Ignore environment
 .env
+
+__pycache__/
+*.py[cod]
+*$py.class
